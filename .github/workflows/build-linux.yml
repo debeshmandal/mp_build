@@ -13,16 +13,14 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, ubuntu-20.04]
+        os: ubuntu-latest
         python-version: "3.11"
-        architecture: [x64, arm64]
     steps:
     - uses: actions/checkout@v4
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v4
       with:
         python-version: ${{ matrix.python-version }}
-        architecture: ${{ matrix.architecture }}
     - name: Update Dependencies
       run: pip install --upgrade pip setuptools wheel softnanotools
     - name: Install
