@@ -4,6 +4,10 @@ import versioneer
 with open("README.md", "r", encoding="utf-8") as f:
     long_description = f.read()
 
+# manage requirements.txt
+with open("requirements.txt", "r", encoding="utf-8") as f:
+    requirements = f.read().splitlines()
+
 setuptools.setup(
     name="mp_build",
     author="mp_build",
@@ -19,4 +23,5 @@ setuptools.setup(
     python_requires=">=3.7",
     version=versioneer.get_version(),
     cmdclass=versioneer.get_cmdclass(),
+    install_requires=requirements,
 )
