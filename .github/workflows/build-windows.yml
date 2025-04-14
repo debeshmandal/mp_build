@@ -1,0 +1,33 @@
+# Builds using pip and tests using pytest
+
+name: Windows Build
+
+on:
+  push:
+    branches: [main, build*]
+  pull_request:
+    branches: [main, build*]
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [windows-latest]
+        python-version: ["3.8", "3.9", "3.10", "3.11"]
+        architecture: [x64]
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+        architecture: ${{ matrix.architecture }}
+    - name: Update Dependencies
+      run: pip install --upgrade pip setuptools wheel softnanotools
+    - name: Install
+      run: pip install .
+    - name: Test
+      run: |
+        pip install pytest
+        pytest
