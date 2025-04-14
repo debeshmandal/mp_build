@@ -14,12 +14,8 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, ubuntu-20.04]
-        python-version: ["3.8", "3.9", "3.10", "3.11"]
+        python-version: "3.11"
         architecture: [x64, arm64]
-        exclude:
-          # Exclude arm64 for Windows as it's not commonly supported
-          - os: windows-latest
-            architecture: arm64
     steps:
     - uses: actions/checkout@v4
     - name: Set up Python ${{ matrix.python-version }}
