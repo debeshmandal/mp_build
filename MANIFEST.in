@@ -1,0 +1,2 @@
+include versioneer.py
+include mp_build/_version.py
