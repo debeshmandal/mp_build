@@ -16,7 +16,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: 3.8
+        python-version: "3.11"
     - name: Update Dependencies
       run: pip install --upgrade pip setuptools wheel
     - name: Install
@@ -24,8 +24,8 @@ jobs:
     - name: Test
       run: |
         pip install pytest pytest-cov
-        pytest --cov-report=xml --cov=rosie
+        pytest --cov-report=xml --cov=mp_build
     - name: Upload coverage reports to Codecov
       uses: codecov/codecov-action@v3
       with:
-        token: ${ secrets.CODECOV_TOKEN }
+        token: ${{ secrets.CODECOV_TOKEN }}

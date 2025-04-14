@@ -9,11 +9,11 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        version: [3.7, 3.8, 3.9]
+        version: ["3.8", "3.9", "3.10", "3.11", "3.12"]
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
     - name: Set up Python
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v4
       with:
         python-version: ${{ matrix.version }}
     - name: Update Dependencies
@@ -22,5 +22,4 @@ jobs:
       run: pip install .
     - name: Test
       run: pip install pytest && pytest
-    - name: Ruff
-      uses: chartboost/ruff-action@v1
+

@@ -3,6 +3,14 @@
 from softnanotools.logger import Logger
 logger = Logger(__name__)
 
+from mp_build.job import job, run
+
+def test_job():
+    assert job(2) == 4
+
+def test_run():
+    assert run() == [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+
 if __name__ == '__main__':
     import doctest
     doctest.testmod()
